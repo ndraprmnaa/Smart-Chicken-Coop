@@ -1,0 +1,336 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ========== HEADER ========== */
+.header {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.header h1 {
+    color: #2563eb;
+    font-size: 28px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f9fafb;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.status-icon {
+    font-size: 24px;
+    animation: pulse 2s infinite;
+}
+
+.status-text {
+    flex: 1;
+}
+
+.status-label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.status-value {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Status Colors */
+.status-heating .status-icon { color: #dc2626; }
+.status-heating .status-value { color: #dc2626; }
+.status-heating .status-container { background: #fef2f2; border-color: #fecaca; }
+
+.status-cooling .status-icon { color: #2563eb; }
+.status-cooling .status-value { color: #2563eb; }
+.status-cooling .status-container { background: #eff6ff; border-color: #bfdbfe; }
+
+.status-standby .status-icon { color: #059669; }
+.status-standby .status-value { color: #059669; }
+.status-standby .status-container { background: #f0fdf4; border-color: #bbf7d0; }
+
+.status-manual .status-icon { color: #d97706; }
+.status-manual .status-value { color: #d97706; }
+.status-manual .status-container { background: #fffbeb; border-color: #fde68a; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* ========== MODE TOGGLE ========== */
+.mode-toggle {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.mode-toggle h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #1f2937;
+}
+
+.toggle-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s;
+    color: #6b7280;
+}
+
+.toggle-btn:hover {
+    border-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.toggle-btn.active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* ========== SENSORS GRID ========== */
+.sensors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.sensor-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.sensor-card:hover {
+    transform: translateY(-5px);
+}
+
+.sensor-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.sensor-label {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.sensor-value {
+    color: #1f2937;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.sensor-unit {
+    color: #9ca3af;
+    font-size: 18px;
+    margin-left: 4px;
+}
+
+/* ========== CONTROLS SECTION ========== */
+.controls-section {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.controls-section h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #1f2937;
+}
+
+.control-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #f3f4f6;
+    transition: background 0.2s;
+}
+
+.control-item:hover {
+    background: #f9fafb;
+    border-radius: 12px;
+}
+
+.control-item:last-child {
+    border-bottom: none;
+}
+
+.control-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-icon {
+    font-size: 32px;
+}
+
+.control-label {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.control-status {
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+/* ========== SWITCH TOGGLE ========== */
+.switch {
+    position: relative;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+    background-color: #2563eb;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+input:disabled + .slider {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ========== CONNECTION STATUS ========== */
+.connection-status {
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.connection-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse-dot 2s infinite;
+}
+
+.connected { background: #10b981; }
+.disconnected { background: #ef4444; animation: none; }
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+}
+
+.last-update {
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 640px) {
+    body {
+        padding: 10px;
+    }
+    
+    .header h1 {
+        font-size: 24px;
+    }
+    
+    .sensor-value {
+        font-size: 28px;
+    }
+
+    .toggle-btn {
+        font-size: 14px;
+        padding: 12px;
+    }
+}

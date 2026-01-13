@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Smart Chicken Coop Monitoring System">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <title>Smart Chicken Coop</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🐔 Smart Chicken Coop</h1>
+            <div id="statusContainer" class="status-container status-standby">
+                <div class="status-icon" id="statusIcon">⏸️</div>
+                <div class="status-text">
+                    <div class="status-label">Status Sistem</div>
+                    <div class="status-value" id="statusValue">STANDBY</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+            <h2>Mode Kontrol</h2>
+            <div class="toggle-buttons">
+                <button class="toggle-btn active" id="autoBtn" onclick="setMode(true)">
+                    🤖 Otomatis
+                </button>
+                <button class="toggle-btn" id="manualBtn" onclick="setMode(false)">
+                    👆 Manual
+                </button>
+            </div>
+        </div>
+
+        <!-- Sensors -->
+        <div class="sensors-grid">
+            <div class="sensor-card">
+                <div class="sensor-icon">🌡️</div>
+                <div class="sensor-label">Suhu</div>
+                <div class="sensor-value">
+                    <span id="temperature">--</span>
+                    <span class="sensor-unit">°C</span>
+                </div>
+            </div>
+
+            <div class="sensor-card">
+                <div class="sensor-icon">💧</div>
+                <div class="sensor-label">Kelembaban</div>
+                <div class="sensor-value">
+                    <span id="humidity">--</span>
+                    <span class="sensor-unit">%</span>
+                </div>
+            </div>
+
+            <div class="sensor-card">
+                <div class="sensor-icon">☀️</div>
+                <div class="sensor-label">Cahaya</div>
+                <div class="sensor-value">
+                    <span id="ldr">--</span>
+                    <span class="sensor-unit"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-section">
+            <h2>Kontrol Perangkat</h2>
+            
+            <div class="control-item">
+                <div class="control-info">
+                    <div class="control-icon">🔥</div>
+                    <div>
+                        <div class="control-label">Lampu Pemanas</div>
+                        <div class="control-status" id="heaterStatus">OFF</div>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="heaterSwitch" onchange="toggleRelay('heater', this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="control-item">
+                <div class="control-info">
+                    <div class="control-icon">💨</div>
+                    <div>
+                        <div class="control-label">Kipas</div>
+                        <div class="control-status" id="fanStatus">OFF</div>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="fanSwitch" onchange="toggleRelay('fan', this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="control-item">
+                <div class="control-info">
+                    <div class="control-icon">💡</div>
+                    <div>
+                        <div class="control-label">Lampu Penerangan</div>
+                        <div class="control-status" id="lightStatus">OFF</div>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="lightSwitch" onchange="toggleRelay('light', this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Connection Status -->
+        <div class="connection-status">
+            <span class="connection-dot connected" id="connectionDot"></span>
+            <span id="connectionText">Terhubung ke Firebase</span>
+            <div class="last-update" id="lastUpdate">Terakhir diperbarui: --</div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
